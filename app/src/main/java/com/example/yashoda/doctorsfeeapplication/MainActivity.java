@@ -23,8 +23,7 @@ import java.util.List;
 
 import static com.example.yashoda.doctorsfeeapplication.CommonUtils.handleException;
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
 
     Connectivity connectivity = new Connectivity();
 
@@ -39,8 +38,7 @@ public class MainActivity extends AppCompatActivity
     //SharedPreferences.Editor editor = sharedPref.edit();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -51,14 +49,11 @@ public class MainActivity extends AppCompatActivity
                 "Logging in",
                 "Please be patient....", false);
         new Thread(new Runnable() {
-            public void run()
-            {
+            public void run() {
                 try {
                     connectivity.connect();
                     populateArray();
-                }
-                catch (final Exception e)
-                {
+                } catch (final Exception e) {
                     progressDialog.cancel();
                     runOnUiThread(new Runnable() {
                         public void run() {
@@ -78,67 +73,61 @@ public class MainActivity extends AppCompatActivity
         createViewPatientDetailsBtn(btnViewPatientDetails);
     }
 
-    private void populateArray() throws SQLException
-    {
+    private void populateArray() throws SQLException {
         ResultSet rs = connectivity.getResultSet(getPatientNameQuery());
         patient = new ArrayList<>();
-        while(rs.next())
-        {
+        while (rs.next()) {
             Patient info = new Patient(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
                     rs.getString(6), rs.getDate(7), rs.getString(8), rs.getString(9));
             patient.add(info);
         }
         populateSpinner();
+        progressDialog.cancel();
     }
 
     private void populateSpinner() {
-        pNames = new ArrayList<>();
-        for (int i = 0; i < patient.size(); i++) {
-            pNames.add(patient.get(i).getPatientName());
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, pNames);
-        spinner.setAdapter(adapter);
-        try
-        {
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-            {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    for (int i = 0; i < patient.size(); i++)
-                    {
-                        if (patient.get(i).getPatientName().equals(spinner.getSelectedItem().toString()))
-                        {
-                            String name = spinner.getSelectedItem().toString();
-                            //editor.putString("key1", name);
+        runOnUiThread(new Runnable() {
+            public void run() {
+                pNames = new ArrayList<>();
+                for (int i = 0; i < patient.size(); i++) {
+                    pNames.add(patient.get(i).getPatientName());
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, pNames);
+                spinner.setAdapter(adapter);
+                try {
+                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            for (int i = 0; i < patient.size(); i++) {
+                                if (patient.get(i).getPatientName().equals(spinner.getSelectedItem().toString())) {
+                                    String name = spinner.getSelectedItem().toString();
+                                    //editor.putString("key1", name);
+                                }
+                            }
                         }
-                    }
-                }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parent)
-                {
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
 
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("Error Message", e.getMessage());
                 }
-            });
-        } catch (Exception e) {
-            Log.e("Error Message", e.getMessage());
-        }
+            }
+        });
     }
 
-    private void createAddNewRecordBtn(Button btnAddNewRecord)
-    {
-        btnAddNewRecord.setOnClickListener(new View.OnClickListener()
-        {
+    private void createAddNewRecordBtn(Button btnAddNewRecord) {
+        btnAddNewRecord.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 startActivity(new Intent(context, AddFeesActivity.class));
             }
         });
     }
 
-    private void createViewFeesBtn(Button btnViewFees)
-    {
+    private void createViewFeesBtn(Button btnViewFees) {
         btnViewFees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,8 +136,7 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    private void createViewPatientDetailsBtn(Button btnViewPatientDetails)
-    {
+    private void createViewPatientDetailsBtn(Button btnViewPatientDetails) {
         btnViewPatientDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
