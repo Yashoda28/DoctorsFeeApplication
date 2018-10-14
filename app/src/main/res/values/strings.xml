@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">DoctorsFeeApplication</string>
+
+    <!--Add Fees-->
+    <string name="txtAddFeesFees">Fees</string>
+    <string name="txtAddFeesDate">Date:</string>
+    <string name="txtAddFeesReason">Reason:</string>
+    <string name="txtAddFeesTotal">Total:</string>
+    <string name="btnAddingOnAddFees">Save</string>
+
+    <!--View Patient Details-->
+    <string name="txtViewingPname"> </string>
+    <string name="txtViewingSurname"> </string>
+    <string name="txtViewingID"> </string>
+    <string name="txtViewingDOB"> </string>
+    <string name="txtViewingCellNum"> </string>
+    <string name="txtViewingBType"> </string>
+    <string name="txtViewingEType"> </string>
+    <string name="txtViewingEName"> </string>
+    <string name="txtViewingENum"> </string>
+
+    <!--Main Activity-->
+    <string name="txtDoctorFeeAppOnMain">Doctor Fee Application</string>
+    <string name="spinPatientName"> </string>
+    <string name="btnAddRecordOnMain">ADD NEW RECORD</string>
+    <string name="btnViewFeesOnMain">VIEW FEES</string>
+    <string name="btnViewPatientDetailsOnMain">VIEW PATIENT DETAILS</string>
+
+</resources>

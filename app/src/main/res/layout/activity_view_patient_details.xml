@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context=".ViewPatientDetailsActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Personal Details"
+        android:id="@+id/txtPDetails"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtPname"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Patient Name:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtPname"
+            android:textSize="20sp"
+            android:id="@+id/txtViewingPName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentTop="true"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtSurname"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Surname:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtSurname"
+            android:textSize="20sp"
+            android:id="@+id/txtViewingSurname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtID"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="ID Number:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtID"
+            android:textSize="20sp"
+            android:id="@+id/txtViewingID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtDOB"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Date of Birth:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtDOB"
+            android:textSize="20sp"
+            android:id="@+id/txtViewingDOB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtCellNum"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Cell Number:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtCellNum"
+            android:textSize="20sp"
+            android:id="@+id/txtViewingCellNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtBType"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Blood Type:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtBType"
+            android:textSize="20sp"
+            android:id="@+id/txtViewingBType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Emergency Details"
+        android:id="@+id/txtEDetails"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtEType"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Contact Type:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtEType"
+            android:textSize="20sp"
+            android:id="@+id/txtViewingEType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtEName"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Name:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtEName"
+            android:textSize="20sp"
+            android:id="@+id/txtViewingEName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtENum"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Cell Number:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtENum"
+            android:textSize="20sp"
+            android:id="@+id/txtViewingENum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+</LinearLayout>
+</ScrollView>
