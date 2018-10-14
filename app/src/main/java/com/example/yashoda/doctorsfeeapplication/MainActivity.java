@@ -34,14 +34,15 @@ public class MainActivity extends AppCompatActivity {
     Spinner spinner;
     ArrayList<Patient> patient;
     List<String> pNames;
-    //final SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-    //SharedPreferences.Editor editor = sharedPref.edit();
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        editor = sharedPref.edit();
         spinner = findViewById(R.id.spinPatientName);
         spinner.getOnItemSelectedListener();
 
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                             for (int i = 0; i < patient.size(); i++) {
                                 if (patient.get(i).getPatientName().equals(spinner.getSelectedItem().toString())) {
                                     String name = spinner.getSelectedItem().toString();
-                                    //editor.putString("key1", name);
+                                    editor.putString(Constants.userName, name);
                                 }
                             }
                         }
