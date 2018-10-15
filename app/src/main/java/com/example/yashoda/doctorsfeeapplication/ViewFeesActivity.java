@@ -46,7 +46,7 @@ public class ViewFeesActivity extends AppCompatActivity
         totalTV = findViewById(R.id.txtTotal);
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        patientID = sharedPref.getString(Constants.patientID,"Keshav");
+        patientID = sharedPref.getString(Constants.patientID,"1");
 
         progressDialog = ProgressDialog.show(context,
                 "Loading",
@@ -87,9 +87,6 @@ public class ViewFeesActivity extends AppCompatActivity
         {
             public void run()
             {
-                dateTV.setMaxWidth(30);
-                totalTV.setMaxWidth(30);
-                reasonTV.setMaxWidth(30);
                 for (int i = 0; i < total.size(); i++) {
                     dateTV.append("\n"+dateTime.get(i).toString());
                     reasonTV.append("\n"+reason.get(i));
