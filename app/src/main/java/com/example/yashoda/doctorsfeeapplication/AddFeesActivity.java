@@ -2,6 +2,8 @@ package com.example.yashoda.doctorsfeeapplication;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,14 +28,18 @@ public class AddFeesActivity extends AppCompatActivity {
     EditText etAddFeesDate;
     EditText etAddFeesReason;
     EditText etAddFeesTotal;
+    SharedPreferences sharedPref;
+    String patientID;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_fees);
 
-        Button btnAdd= findViewById(R.id.btnAddingOnAddFees);
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        patientID = sharedPref.getString(Constants.patientID, "10");
+
+        Button btnAdd = findViewById(R.id.btnAddingOnAddFees);
         findViews();
         createSaveButton(btnAdd, etAddFeesDate, etAddFeesReason, etAddFeesTotal);
 
@@ -45,35 +51,28 @@ public class AddFeesActivity extends AppCompatActivity {
         etAddFeesTotal = findViewById(R.id.etAddFeesTotal);
     }
 
-    private void createSaveButton(Button btnAdd, final EditText etAddFeesDate, final EditText etAddFeesReason, final EditText etAddFeesTotal)
-    {
-        btnAdd.setOnClickListener(new View.OnClickListener()
-        {
+    private void createSaveButton(Button btnAdd, final EditText etAddFeesDate, final EditText etAddFeesReason, final EditText etAddFeesTotal) {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                final Date date;
-                try
-                {
-                    date = new SimpleDateFormat("dd/MM/yyyy").parse(etAddFeesDate.getText().toString());
-                }
-                catch (ParseException e) {
+            public void onClick(View v) {
+                String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+                try {
+                    date = new SimpleDateFormat("dd/MM/yyyy").format(new SimpleDateFormat("dd/MM/yyyy").parse(etAddFeesDate.getText().toString()));
+                } catch (ParseException e) {
                     e.printStackTrace();
                 }
                 final String reason = etAddFeesReason.getText().toString();
                 final Double total = Double.parseDouble(etAddFeesTotal.getText().toString());
 
                 progressDialog = ProgressDialog.show(context,
-                        "Logging in",
+                        "Loading",
                         "Please be patient....", false);
+                final String finalDate = date;
                 new Thread(new Runnable() {
-                    public void run()
-                    {
+                    public void run() {
                         try {
-                            //Save(date, reason, total);
-                        }
-                        catch (final Exception e)
-                        {
+                            Save(finalDate,reason,total);
+                        } catch (final Exception e) {
                             progressDialog.cancel();
                             runOnUiThread(new Runnable() {
                                 public void run() {
@@ -84,22 +83,18 @@ public class AddFeesActivity extends AppCompatActivity {
                     }
                 }).start();
             }
-            });
+        });
     }
 
-    /* private String Save(Date date, String reason, Double total) throws SQLException
-    {
-       ResultSet rs;
-        rs = connectivity.insertUpdateOrDelete(getPatientQuery(pName, surname, emailAddress, password, iDNumber, dateOfBirth, cellNumber, bloodType));
-        rs.rowin
-        rs = connectivity.insertUpdateOrDelete(getEmergencyQuery(emergencyType, emergencyName, emergencyNumber));
+    private boolean Save(String date, String reason, Double total) throws SQLException {
+        int rowsInserted = connectivity.insertUpdateOrDelete(getFeesQuery(date,reason,total, patientID));
+        progressDialog.cancel();
+        return true;
+    }
 
-        return null;
-    }*/
-
-    private String getFeesQuery(Date date, String reason, Double total)
-    {
-        return "INSERT INTO FROM FEES F WHERE F.DATETIME = '" + date + "' F.REASON = '" + reason + "' F.TOTAL = '" + total + "'";
+    private String getFeesQuery(String date, String reason, Double total, String patientID) {
+        return "INSERT INTO FEES (DATETIME,REASON,TOTAL,PATIENTID)" +
+                "VALUES(" + date + "," + reason + "," + total + "," + patientID + ")";
     }
 
 

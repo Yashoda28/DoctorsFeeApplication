@@ -26,4 +26,9 @@
     <string name="btnViewFeesOnMain">VIEW FEES</string>
     <string name="btnViewPatientDetailsOnMain">VIEW PATIENT DETAILS</string>
 
+    <!--View Fees-->
+    <string name="txtDate">Date</string>
+    <string name="txtReason">Reason</string>
+    <string name="txtTotal">Total</string>
+
 </resources>

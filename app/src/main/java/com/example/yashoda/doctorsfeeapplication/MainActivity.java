@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         spinner.getOnItemSelectedListener();
 
         progressDialog = ProgressDialog.show(context,
-                "Logging in",
+                "Loading",
                 "Please be patient....", false);
         new Thread(new Runnable() {
             public void run() {
@@ -101,8 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             for (int i = 0; i < patient.size(); i++) {
                                 if (patient.get(i).getPatientName().equals(spinner.getSelectedItem().toString())) {
-                                    String name = spinner.getSelectedItem().toString();
-                                    editor.putString(Constants.userName, name);
+                                    editor.putString(Constants.patientID, patient.get(i).getPatientID()+"");
                                 }
                             }
                         }

@@ -54,10 +54,10 @@ class Connectivity extends AsyncTask {
             throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
     }
 
-    synchronized void insertUpdateOrDelete(String query) throws SQLException {
-        if(connection != null) {
+    synchronized int insertUpdateOrDelete(String query) throws SQLException {
+        if (connection != null) {
             Statement sm = connection.createStatement();
-            sm.executeQuery(query);
+            return sm.executeUpdate(query);
         }
         throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
     }
